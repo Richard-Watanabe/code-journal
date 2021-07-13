@@ -1,16 +1,26 @@
 /* global data */
 /* exported data */
 
-var imageUrl = document.querySelector('#photo-url');
+var imageUrlElement = document.querySelector('#photo-url');
 var image = document.querySelector('img');
+// var titleElement = document.querySelector('#title');
+// var notesElement = document.querySelector('#notes');
+var $form = document.querySelector('form');
 
-function update(event) {
+function uploadImage(event) {
   var imageUrl = event.target.value;
   image.setAttribute('src', imageUrl);
 }
 
-imageUrl.addEventListener('input', update);
+imageUrlElement.addEventListener('input', uploadImage);
 
-var saveButton = document.querySelector('.save-button');
+var dataObject = {};
+function save(event) {
+  event.preventDefault();
+  dataObject.title = $form.elements.title.value;
+  dataObject.photo = $form.elements.photo.value;
+  dataObject.notes = $form.elements.notes.value;
+  // console.log(dataObject);
+}
 
-saveButton.addEventListener('submit');
+$form.addEventListener('submit', save);

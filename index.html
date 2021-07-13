@@ -22,7 +22,7 @@
       </div>
     </div>
   </header>
-  <main>
+  <main class="background-lightgray">
     <div class="container">
       <form>
         <div class="row column-full">
@@ -34,14 +34,14 @@
           </div>
           <div class="column-half">
             <label for="title">Title</label>
-            <input type="text" id="title" class="input" required>
+            <input type="text" id="title" class="input" name="title" required>
             <label for="photo-url">Photo URL</label>
-            <input type="text" id="photo-url" class="input" required>
+            <input type="text" id="photo-url" class="input" name="photo" required>
           </div>
         </div>
         <div class="row column-full">
           <label for="notes">Notes</label>
-          <textarea type="text-area" id="notes" rows="6" class="input" required></textarea>
+          <textarea type="text-area" id="notes" rows="6" class="input" name="notes" required></textarea>
         </div>
         <div class="row column-full flex-end">
           <input type="submit" value="SAVE" class="white-text purple save-button">

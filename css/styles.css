@@ -15,9 +15,13 @@ textarea {
   margin-bottom: 1.2rem;
   margin-top: 0.7rem;
   padding: 0.5rem 0.2rem;
-  border-color: lightgray;
+  border: 2px solid lightgray;
   border-radius: 5px;
   width: 100%;
+}
+
+.background-lightgray {
+  background-color: rgb(237, 235, 237);
 }
 
 .purple {
