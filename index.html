@@ -17,19 +17,23 @@
 <body class="background-lightgray">
   <header class="purple">
     <div class = "container">
-      <div class="row column-full">
-        <h2 class="white-text">Code Journal</h2>
+      <div class="row">
+        <div class="column-full">
+          <h2 class="white-text">Code Journal</h2>
+        </div>
       </div>
     </div>
   </header>
   <main>
     <div data-view="entry-form" class="container">
       <form>
-        <div class="row column-full">
-          <h1>New Entry</h1>
+        <div class="row">
+          <div class="column-full">
+            <h1>New Entry</h1>
+          </div>
         </div>
         <div class="row">
-          <div class = "row column-half cover">
+          <div class = "column-half cover">
             <img src="images/placeholder-image-square.jpg">
           </div>
           <div class="column-half">
@@ -39,12 +43,16 @@
             <input type="text" id="photo-url" class="input" name="photo" required>
           </div>
         </div>
-        <div class="row column-full">
-          <label for="notes">Notes</label>
-          <textarea type="text-area" id="notes" rows="6" class="input" name="notes" required></textarea>
+        <div class="row">
+          <div class="column-full">
+            <label for="notes">Notes</label>
+            <textarea type="text-area" id="notes" rows="6" class="input" name="notes" required></textarea>
+          </div>
         </div>
-        <div class="row column-full flex-end">
-          <input type="submit" value="SAVE" class="white-text purple save-button">
+        <div class="column-full">
+          <div class="row flex-end">
+            <input type="submit" value="SAVE" class="white-text purple save-button">
+          </div>
         </div>
       </form>
     </div>
