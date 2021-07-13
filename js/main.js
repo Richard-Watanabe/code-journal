@@ -10,3 +10,7 @@ function update(event) {
 }
 
 imageUrl.addEventListener('input', update);
+
+var saveButton = document.querySelector('.save-button');
+
+saveButton.addEventListener('submit');
