@@ -15,42 +15,40 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div data-view="entry-form" class = "container">
-    <header>
-      <div class="row column-full purple full">
+  <header class="purple">
+    <div data-view="entry-form" class = "container">
+      <div class="row column-full">
         <h2 class="white-text">Code Journal</h2>
       </div>
-      <div class = "row column-full">
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row column-full">
         <h1>New Entry</h1>
       </div>
-    </header>
-    <main>
-      <div class = "row column-full cover">
-        <img src="images/placeholder-image-square.jpg">
-      </div>
-      <div class="row column-full">
-        <label for="title">Title</label>
-      </div>
-      <div class="row column-full">
-        <input type = "text" id="title" size="73">
-      </div>
-      <div class="row column-full">
-        <label for="photo-url">Photo URL</label>
-      </div>
-      <div class="row column-full">
-        <input type="text" id ="photo-url" size="73">
+      <div class="row">
+        <div class = "row column-half cover">
+          <img src="images/placeholder-image-square.jpg">
+        </div>
+        <div class="column-half">
+          <label for="title">Title</label>
+          <input type="text" id="title" class="input">
+          <label for="photo-url">Photo URL</label>
+          <input type="text" id="photo-url" class="input">
+        </div>
       </div>
       <div class="row column-full">
         <label for="notes">Notes</label>
       </div>
       <div class="row column-full">
-        <textarea type="text-area" id="notes" rows="6" cols="73"></textarea>
+        <textarea type="text-area" id="notes" rows="6" class="input"></textarea>
       </div>
       <div class="row column-full flex-end">
         <input type="submit" value="SAVE" class="white-text purple save-button">
       </div>
-    </main>
-  </div>
+    </div>
+  </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
