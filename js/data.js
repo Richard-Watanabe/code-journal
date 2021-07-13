@@ -21,14 +21,15 @@ function uploadImage(event) {
 imageUrlElement.addEventListener('input', uploadImage);
 
 var dataObject = {};
-var entryId = 1;
 function save(event) {
   event.preventDefault();
   dataObject.title = $form.elements.title.value;
   dataObject.photo = $form.elements.photo.value;
   dataObject.notes = $form.elements.notes.value;
-  dataObject.nextEntryId = entryId++;
+  dataObject.nextEntryId = data.nextEntryId++;
+  data.entries.unshift(dataObject);
   // console.log(dataObject);
+  // console.log(data);
 }
 
 $form.addEventListener('submit', save);
