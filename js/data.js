@@ -28,25 +28,30 @@ function saveEntry(event) {
   data.entries.unshift(dataObject);
   image.setAttribute('src', 'images/placeholder-image-square.jpg');
   var newEntry = JSON.stringify(dataObject);
-  localStorage.setItem('New Entry', newEntry);
+  localStorage.setItem('new-entry', newEntry);
   var dataModel = JSON.stringify(data);
-  localStorage.setItem('Data Model', dataModel);
+  localStorage.setItem('data-model', dataModel);
   $form.reset();
   // console.log(dataObject);
   // console.log(data);
 }
 
-var newEntryJSON = localStorage.getItem('New Entry');
+var newEntryJSON = localStorage.getItem('new-entry');
+var newDataJSON = localStorage.getItem('data-model');
 
 if (newEntryJSON !== null) {
-  data.entries = JSON.parse(newEntryJSON);
+  dataObject = JSON.parse(newEntryJSON);
+}
+
+if (newDataJSON !== null) {
+  data = JSON.parse(newDataJSON);
 }
 
 function saveData(event) {
   var newEntry = JSON.stringify(dataObject);
-  localStorage.setItem('New Entry', newEntry);
+  localStorage.setItem('new-entry', newEntry);
   var dataModel = JSON.stringify(data);
-  localStorage.setItem('Data Model', dataModel);
+  localStorage.setItem('data-model', dataModel);
 }
 
 window.addEventListener('beforeunload', saveData);
