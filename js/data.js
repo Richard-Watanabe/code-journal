@@ -31,6 +31,7 @@ function save(event) {
   // console.log(dataObject);
   // console.log(data);
   image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $form.reset();
 }
 
 $form.addEventListener('submit', save);
