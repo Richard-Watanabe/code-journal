@@ -30,6 +30,7 @@ function save(event) {
   data.entries.unshift(dataObject);
   // console.log(dataObject);
   // console.log(data);
+  image.setAttribute('src', 'images/placeholder-image-square.jpg');
 }
 
 $form.addEventListener('submit', save);
