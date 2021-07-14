@@ -24,7 +24,7 @@ function saveEntry(event) {
   data.entries.unshift(dataObject);
   image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
-  window.location.reload(true);
+  window.location.reload();
 }
 
 $form.addEventListener('submit', saveEntry);
