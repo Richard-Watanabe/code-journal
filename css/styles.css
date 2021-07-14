@@ -18,6 +18,11 @@ li {
   list-style-type: none;
 }
 
+p {
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
 .input,
 textarea {
   margin-bottom: 1.2rem;
@@ -58,4 +63,8 @@ textarea:focus {
 
 .flex-end {
   justify-content: flex-end;
+}
+
+.less-margin {
+  margin: 0;
 }
