@@ -27,3 +27,10 @@ function saveEntry(event) {
 }
 
 $form.addEventListener('submit', saveEntry);
+
+function findEntry(entry) {
+  var foundEntry = document.querySelector(entry);
+  return foundEntry;
+}
+
+findEntry('.dummy2');
