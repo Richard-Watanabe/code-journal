@@ -1,16 +1,16 @@
 /* global data */
 /* exported data */
 
-var imageUrlElement = document.querySelector('#photo-url');
-var image = document.querySelector('img');
+var $imageUrlElement = document.querySelector('#photo-url');
+var $image = document.querySelector('img');
 var $form = document.querySelector('form');
 
 function uploadImage(event) {
   var imageUrl = event.target.value;
-  image.setAttribute('src', imageUrl);
+  $image.setAttribute('src', imageUrl);
 }
 
-imageUrlElement.addEventListener('input', uploadImage);
+$imageUrlElement.addEventListener('input', uploadImage);
 
 function saveEntry(event) {
   event.preventDefault();
@@ -22,14 +22,14 @@ function saveEntry(event) {
   dataObject.entryId = data.nextEntryId;
   data.nextEntryId++;
   data.entries.unshift(dataObject);
-  image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
-  window.location.reload(true);
+  window.location.reload();
 }
 
 $form.addEventListener('submit', saveEntry);
 
-var parent = document.querySelector('ul');
+var $parent = document.querySelector('ul');
 
 function createDom(entry) {
   var newList = document.createElement('li');
@@ -69,28 +69,34 @@ function createDom(entry) {
 function addEntry(event) {
   for (var i = 0; i < data.entries.length; i++) {
     var entryNew = createDom(data.entries[i]);
-    parent.appendChild(entryNew);
+    $parent.appendChild(entryNew);
   }
 }
 
 window.addEventListener('DOMContentLoaded', addEntry);
 
-var newButton = document.querySelector('.new-button');
-var newModal = document.querySelector('.new');
-var viewEntries = document.querySelector('.view');
+var $newButton = document.querySelector('.new-button');
+var $newModal = document.querySelector('.new');
+var $viewEntries = document.querySelector('.view');
 
 function popUpNew(event) {
-  newModal.className = 'container new';
-  viewEntries.className = 'hidden view';
+  $newModal.className = 'container new';
+  $viewEntries.className = 'hidden view';
 }
 
-newButton.addEventListener('click', popUpNew);
+$newButton.addEventListener('click', popUpNew);
 
-var entriesButton = document.querySelector('.entries');
+var $entriesButton = document.querySelector('.entries');
 
 function goToEntries(event) {
-  viewEntries.className = 'view';
-  newModal.className = 'hidden container new';
+  $viewEntries.className = 'view';
+  $newModal.className = 'hidden container new';
 }
 
-entriesButton.addEventListener('click', goToEntries);
+$entriesButton.addEventListener('click', goToEntries);
+
+var $noEntry = document.querySelector('.noEntry');
+
+if (data.nextEntryId > 1) {
+  $noEntry.className = 'hidden';
+}

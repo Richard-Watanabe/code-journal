@@ -84,10 +84,10 @@ textarea:focus {
   justify-content: flex-end;
 }
 
-.less-margin {
-  margin: 0;
-}
-
 .space-between {
   justify-content: space-between;
+}
+
+.noEntry {
+  margin-top: 5rem;
 }
