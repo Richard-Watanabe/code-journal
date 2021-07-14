@@ -73,3 +73,23 @@ function addEntry(event) {
 }
 
 window.addEventListener('DOMContentLoaded', addEntry);
+
+var newButton = document.querySelector('.new-button');
+var newModal = document.querySelector('.new');
+var viewEntries = document.querySelector('.view');
+
+function popUpNew(event) {
+  newModal.className = 'container new';
+  viewEntries.className = 'hidden view';
+}
+
+newButton.addEventListener('click', popUpNew);
+
+var entriesButton = document.querySelector('.entries');
+
+function goToEntries(event) {
+  viewEntries.className = 'view';
+  newModal.className = 'hidden container new';
+}
+
+entriesButton.addEventListener('click', goToEntries);
