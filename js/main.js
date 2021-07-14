@@ -23,8 +23,12 @@ function saveEntry(event) {
   data.nextEntryId++;
   data.entries.unshift(dataObject);
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  var addNew = createDom(dataObject);
+  $parent.prepend(addNew);
+  $viewEntries.className = 'view';
+  $newModal.className = 'container hidden new';
+  $noEntry.className = 'hidden';
   $form.reset();
-  window.location.reload();
 }
 
 $form.addEventListener('submit', saveEntry);
@@ -75,28 +79,24 @@ function addEntry(event) {
 
 window.addEventListener('DOMContentLoaded', addEntry);
 
-var $newButton = document.querySelector('.new-button');
+var $body = document.querySelector('body');
 var $newModal = document.querySelector('.new');
 var $viewEntries = document.querySelector('.view');
 
-function popUpNew(event) {
-  $newModal.className = 'container new';
-  $viewEntries.className = 'hidden view';
+function switchView(event) {
+  if (event.target.matches('.entries-link')) {
+    $viewEntries.className = 'view';
+    $newModal.className = 'container hidden new';
+  } else if (event.target.matches('.new-button')) {
+    $viewEntries.className = 'view hidden';
+    $newModal.className = 'container new';
+  }
 }
 
-$newButton.addEventListener('click', popUpNew);
-
-var $entriesButton = document.querySelector('.entries');
-
-function goToEntries(event) {
-  $viewEntries.className = 'view';
-  $newModal.className = 'hidden container new';
-}
-
-$entriesButton.addEventListener('click', goToEntries);
+$body.addEventListener('click', switchView);
 
 var $noEntry = document.querySelector('.noEntry');
 
-if (data.nextEntryId > 1) {
+if (data.entries.length !== 0) {
   $noEntry.className = 'hidden';
 }
