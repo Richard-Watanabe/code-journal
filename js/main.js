@@ -2,6 +2,8 @@
 /* exported data */
 
 var $imageUrlElement = document.querySelector('#photo-url');
+var $titleElement = document.querySelector('#title');
+var $notesElement = document.querySelector('#notes');
 var $image = document.querySelector('img');
 var $form = document.querySelector('form');
 
@@ -118,6 +120,7 @@ if (data.entries.length !== 0) {
 }
 
 var $ul = document.querySelector('ul');
+var $h1 = document.querySelector('.new-form');
 
 function showEditForm(event) {
   if (event.target.matches('i')) {
@@ -127,8 +130,26 @@ function showEditForm(event) {
         data.editing = data.entries[i];
       }
     }
+
+    $titleElement.setAttribute('value', data.editing.title);
+    $imageUrlElement.setAttribute('value', data.editing.photo);
+    $image.setAttribute('src', data.editing.photo);
+    $notesElement.textContent = data.editing.notes;
+    $h1.textContent = 'Edit Entry';
     switchView('entry-form');
   }
 }
 
 $ul.addEventListener('click', showEditForm);
+
+var $newButton = document.querySelector('.new-button');
+
+function keepH1(event) {
+  $h1.textContent = 'New Entry';
+  $titleElement.setAttribute('value', '');
+  $imageUrlElement.setAttribute('value', '');
+  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $notesElement.textContent = '';
+}
+
+$newButton.addEventListener('click', keepH1);
