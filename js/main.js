@@ -36,6 +36,7 @@ var $parent = document.querySelector('ul');
 
 function createDom(entry) {
   var newList = document.createElement('li');
+  newList.setAttribute('data-entry-id', entry.entryId);
 
   var rowDiv = document.createElement('div');
   rowDiv.setAttribute('class', 'row');
