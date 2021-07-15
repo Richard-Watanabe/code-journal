@@ -53,10 +53,14 @@ function createDom(entry) {
   newH2.setAttribute('class', 'less-margin');
   newH2.textContent = entry.title;
 
+  var newIcon = document.createElement('i');
+  newIcon.setAttribute('class', 'fas fa-pen icon');
+
   var newP = document.createElement('p');
   newP.textContent = entry.notes;
 
   columnDiv2.appendChild(newH2);
+  columnDiv2.appendChild(newIcon);
   columnDiv2.appendChild(newP);
 
   rowDiv.appendChild(columnDiv);
