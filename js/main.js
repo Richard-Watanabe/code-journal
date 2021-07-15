@@ -119,10 +119,16 @@ if (data.entries.length !== 0) {
 
 var $ul = document.querySelector('ul');
 
-function showForm(event) {
+function showEditForm(event) {
   if (event.target.matches('i')) {
+    var stringId = event.target.closest('li').getAttribute('data-entry-id');
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === parseInt(stringId)) {
+        data.editing = data.entries[i];
+      }
+    }
     switchView('entry-form');
   }
 }
 
-$ul.addEventListener('click', showForm);
+$ul.addEventListener('click', showEditForm);
