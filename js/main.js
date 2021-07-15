@@ -13,7 +13,6 @@ function uploadImage(event) {
 $imageUrlElement.addEventListener('input', uploadImage);
 
 function saveEntry(event) {
-  switchView(data.view);
   event.preventDefault();
   var dataObject = {
     title: $form.elements.title.value,
@@ -79,6 +78,12 @@ function addEntry(event) {
 
 window.addEventListener('DOMContentLoaded', addEntry);
 
+function stayOnView(event) {
+  switchView(data.view);
+}
+
+window.addEventListener('DOMContentLoaded', stayOnView);
+
 var $body = document.querySelector('body');
 var $view = document.querySelectorAll('.view');
 
@@ -95,21 +100,12 @@ function switchView(name) {
 
 function linkSwitch(event) {
   if (event.target.matches('.link')) {
-    if (event.target.getAttribute('data-view') === 'entries') {
-      switchView('entries');
-    } else {
-      switchView('entry-form');
-    }
+    var targetDataView = event.target.getAttribute('data-view');
+    switchView(targetDataView);
   }
 }
 
 $body.addEventListener('click', linkSwitch);
-
-function stayOnView(event) {
-  switchView(data.view);
-}
-
-window.addEventListener('DOMContentLoaded', stayOnView);
 
 var $noEntry = document.querySelector('.noEntry');
 if (data.entries.length !== 0) {
