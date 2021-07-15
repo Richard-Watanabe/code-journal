@@ -95,3 +95,8 @@ textarea:focus {
 .less-margin {
   margin: 0;
 }
+
+.entries-nav {
+  position: relative;
+  top: 1.5rem;
+}
