@@ -17,15 +17,18 @@
 <body class="background-lightgray">
   <header class="purple">
     <div class = "container">
-      <div class="row">
-        <div class="column-full">
+      <div class="column-full">
+        <div class="row">
           <h2 class="white-text">Code Journal</h2>
+            <nav class ="entries-nav">
+              <a href="#" data-view="entries" class="white-text link">Entries</a>
+            </nav>
         </div>
       </div>
     </div>
   </header>
   <main>
-    <div data-view="entry-form" class="container">
+    <div data-view="entry-form" class="view container hidden">
       <form>
         <div class="row">
           <div class="column-full">
@@ -51,10 +54,23 @@
         </div>
         <div class="column-full">
           <div class="row flex-end">
-            <input type="submit" value="SAVE" class="white-text purple save-button">
+            <input type="submit" value="SAVE" data-view="entries" class="white-text purple save-button">
           </div>
         </div>
       </form>
+    </div>
+    <div data-view="entries" class = "view container">
+      <div class="column-full">
+        <div class="row space-between">
+          <h1>Entries</h1>
+          <p class = "noEntry">No entries have been recorded.</p>
+            <nav>
+              <a href="#" data-view="entry-form" class="purple new-button white-text link">NEW</a>
+            </nav>
+        </div>
+      </div>
+      <ul>
+      </ul>
     </div>
   </main>
   <script src="js/data.js"></script>
