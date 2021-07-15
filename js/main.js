@@ -74,10 +74,6 @@ function createDom(entry) {
   return newList;
 }
 
-var $ul = document.querySelector('ul');
-
-$ul.addEventlistener('click'); // howForm);
-
 function addEntry(event) {
   for (var i = 0; i < data.entries.length; i++) {
     var entryNew = createDom(data.entries[i]);
@@ -120,3 +116,13 @@ var $noEntry = document.querySelector('.noEntry');
 if (data.entries.length !== 0) {
   $noEntry.className = 'hidden';
 }
+
+var $ul = document.querySelector('ul');
+
+function showForm(event) {
+  if (event.target.matches('i')) {
+    switchView('entry-form');
+  }
+}
+
+$ul.addEventListener('click', showForm);

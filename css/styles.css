@@ -107,4 +107,5 @@ textarea:focus {
   position: relative;
   bottom: 1.5rem;
   font-size: 1.5rem;
+  cursor: pointer;
 }
