@@ -74,6 +74,10 @@ function createDom(entry) {
   return newList;
 }
 
+var $ul = document.querySelector('ul');
+
+$ul.addEventlistener('click'); // howForm);
+
 function addEntry(event) {
   for (var i = 0; i < data.entries.length; i++) {
     var entryNew = createDom(data.entries[i]);
