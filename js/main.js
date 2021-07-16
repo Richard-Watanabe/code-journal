@@ -23,17 +23,18 @@ function saveEntry(event) {
   };
   dataObject.entryId = data.nextEntryId;
   data.nextEntryId++;
-  if (data.editing.title !== $titleElement.getAttribute('value') || data.editing.photo !== $imageUrlElement.getAttribute('value') || data.editing.notes !== $notesElement.textContent) {
-    data.editing.unshift(dataObject);
-  } else {
-    data.entries.unshift(dataObject);
-  }
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $noEntry.className = 'hidden';
   $form.reset();
   switchView('entries');
   var addNew = createDom(dataObject);
   $parent.prepend(addNew);
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      data.entries.splice(i, 0, dataObject);
+    }
+  }
+  // data.entries.unshift(dataObject);
 }
 
 $form.addEventListener('submit', saveEntry);
