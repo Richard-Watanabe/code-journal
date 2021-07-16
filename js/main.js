@@ -23,13 +23,17 @@ function saveEntry(event) {
   };
   dataObject.entryId = data.nextEntryId;
   data.nextEntryId++;
-  data.entries.unshift(dataObject);
+  if (data.editing.title !== $titleElement.getAttribute('value') || data.editing.photo !== $imageUrlElement.getAttribute('value') || data.editing.notes !== $notesElement.textContent) {
+    data.editing.unshift(dataObject);
+  } else {
+    data.entries.unshift(dataObject);
+  }
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
-  var addNew = createDom(dataObject);
-  $parent.prepend(addNew);
   $noEntry.className = 'hidden';
   $form.reset();
   switchView('entries');
+  var addNew = createDom(dataObject);
+  $parent.prepend(addNew);
 }
 
 $form.addEventListener('submit', saveEntry);
