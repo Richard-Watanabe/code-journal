@@ -31,10 +31,9 @@ function saveEntry(event) {
   $parent.prepend(addNew);
   for (var i = 0; i < data.entries.length; i++) {
     if (data.entries[i].entryId === data.editing.entryId) {
-      data.entries.splice(i, 0, dataObject);
+      data.entries.splice(i, 1, dataObject);
     }
   }
-  // data.entries.unshift(dataObject);
 }
 
 $form.addEventListener('submit', saveEntry);
