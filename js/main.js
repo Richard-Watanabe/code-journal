@@ -2,41 +2,71 @@
 /* exported data */
 
 var $imageUrlElement = document.querySelector('#photo-url');
-var $titleElement = document.querySelector('#title');
-var $notesElement = document.querySelector('#notes');
-var $image = document.querySelector('img');
-var $form = document.querySelector('form');
+var $imageUrlElementEdit = document.querySelector('#photo-url-edit');
+var $titleElementEdit = document.querySelector('#title-edit');
+var $notesElementEdit = document.querySelector('#notes-edit');
+var $image = document.querySelector('.entry-image');
+var $imageEdit = document.querySelector('.edit-image');
+var $formEntry = document.querySelector('.entry-form');
+var $formEdit = document.querySelector('.edit-form');
 
 function uploadImage(event) {
   var imageUrl = event.target.value;
   $image.setAttribute('src', imageUrl);
 }
 
+function uploadImageEdit(event) {
+  var imageUrlEdit = event.target.value;
+  $imageEdit.setAttribute('src', imageUrlEdit);
+}
+
+$imageUrlElementEdit.addEventListener('input', uploadImageEdit);
 $imageUrlElement.addEventListener('input', uploadImage);
 
 function saveEntry(event) {
   event.preventDefault();
   var dataObject = {
-    title: $form.elements.title.value,
-    photo: $form.elements.photo.value,
-    notes: $form.elements.notes.value
+    title: $formEntry.elements.title.value,
+    photo: $formEntry.elements.photo.value,
+    notes: $formEntry.elements.notes.value
   };
   dataObject.entryId = data.nextEntryId;
   data.nextEntryId++;
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $noEntry.className = 'hidden';
-  $form.reset();
+  $formEntry.reset();
   switchView('entries');
   var addNew = createDom(dataObject);
   $parent.prepend(addNew);
+  data.entries.unshift(dataObject);
+}
+
+function editEntry(event) {
+  event.preventDefault();
+  var dataObjectEdited = {
+    title: $formEdit.elements.title.value,
+    photo: $formEdit.elements.photo.value,
+    notes: $formEdit.elements.notes.value
+  };
+  $noEntry.className = 'hidden';
+  switchView('entries');
+  //   for (var i = 0; i < data.entries.length; i++) {
+  //     if (data.entries[i].entryId === data.editing.entryId) {
+  //       var addNew = createDom(dataObjectEdited);
+  //       $parent.prepend(addNew);
+  //       $parent.removeChild();
+  //     }
+  //   }
+  // }
   for (var i = 0; i < data.entries.length; i++) {
     if (data.entries[i].entryId === data.editing.entryId) {
-      data.entries.splice(i, 1, dataObject);
+      data.entries.splice(i, 1, dataObjectEdited);
     }
   }
 }
 
-$form.addEventListener('submit', saveEntry);
+$formEntry.addEventListener('submit', saveEntry);
+$formEdit.addEventListener('submit', editEntry);
 
 var $parent = document.querySelector('ul');
 
@@ -61,7 +91,8 @@ function createDom(entry) {
   newH2.textContent = entry.title;
 
   var newIcon = document.createElement('i');
-  newIcon.setAttribute('class', 'fas fa-pen icon');
+  newIcon.setAttribute('class', 'fas fa-pen icon link');
+  newIcon.setAttribute('data-view', 'edit-form');
 
   var newP = document.createElement('p');
   newP.textContent = entry.notes;
@@ -124,7 +155,6 @@ if (data.entries.length !== 0) {
 }
 
 var $ul = document.querySelector('ul');
-var $h1 = document.querySelector('.new-form');
 
 function showEditForm(event) {
   if (event.target.matches('i')) {
@@ -134,26 +164,12 @@ function showEditForm(event) {
         data.editing = data.entries[i];
       }
     }
-
-    $titleElement.setAttribute('value', data.editing.title);
-    $imageUrlElement.setAttribute('value', data.editing.photo);
-    $image.setAttribute('src', data.editing.photo);
-    $notesElement.textContent = data.editing.notes;
-    $h1.textContent = 'Edit Entry';
-    switchView('entry-form');
+    $titleElementEdit.setAttribute('value', data.editing.title);
+    $imageUrlElementEdit.setAttribute('value', data.editing.photo);
+    $imageEdit.setAttribute('src', data.editing.photo);
+    $notesElementEdit.textContent = data.editing.notes;
+    switchView('edit-form');
   }
 }
 
 $ul.addEventListener('click', showEditForm);
-
-var $newButton = document.querySelector('.new-button');
-
-function keepH1(event) {
-  $h1.textContent = 'New Entry';
-  $titleElement.setAttribute('value', '');
-  $imageUrlElement.setAttribute('value', '');
-  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $notesElement.textContent = '';
-}
-
-$newButton.addEventListener('click', keepH1);

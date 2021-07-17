@@ -29,7 +29,7 @@
   </header>
   <main>
     <div data-view="entry-form" class="view container hidden">
-      <form>
+      <form class="entry-form">
         <div class="row">
           <div class="column-full">
             <h1 class="new-form">New Entry</h1>
@@ -37,7 +37,7 @@
         </div>
         <div class="row">
           <div class = "column-half cover">
-            <img src="images/placeholder-image-square.jpg">
+            <img src="images/placeholder-image-square.jpg" class="entry-image">
           </div>
           <div class="column-half">
             <label for="title">Title</label>
@@ -50,6 +50,37 @@
           <div class="column-full">
             <label for="notes">Notes</label>
             <textarea type="text-area" id="notes" rows="6" class="input" name="notes" required></textarea>
+          </div>
+        </div>
+        <div class="column-full">
+          <div class="row flex-end">
+            <input type="submit" value="SAVE" data-view="entries" class="white-text purple save-button">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div data-view="edit-form" class="view container hidden">
+      <form class="edit-form">
+        <div class="row">
+          <div class="column-full">
+            <h1 class="new-form">Edit Entry</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-half cover">
+            <img src="images/placeholder-image-square.jpg" class="edit-image">
+          </div>
+          <div class="column-half">
+            <label for="title-edit">Title</label>
+            <input type="text" id="title-edit" class="input" name="title" required>
+            <label for="photo-url-edit">Photo URL</label>
+            <input type="text" id="photo-url-edit" class="input" name="photo" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <label for="notes-edit">Notes</label>
+            <textarea type="text-area" id="notes-edit" rows="6" class="input" name="notes" required></textarea>
           </div>
         </div>
         <div class="column-full">
