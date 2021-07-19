@@ -58,12 +58,10 @@ function saveEntry(event) {
         data.editing.title = $form.elements.title.value;
         data.editing.photo = $form.elements.photo.value;
         data.editing.notes = $form.elements.notes.value;
-        var addEdit = createDom(data.editing);
-        var $mainList = document.querySelector('.mainlist');
-        $mainList.replacWith(addEdit);
-        $parent.prepend(addEdit);
-        $parent.removeChild($mainList);
         data.entries.splice(i, 1, dataObject);
+        // var $mainList = document.querySelectorAll('.mainlist');
+        var addEdit = createDom(data.editing);
+        data.entries[i].replaceWith(addEdit);
         switchView('entries');
       }
     }
