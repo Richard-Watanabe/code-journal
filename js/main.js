@@ -12,6 +12,7 @@ var $parent = document.querySelector('ul');
 var $body = document.querySelector('body');
 var $view = document.querySelectorAll('.view');
 var $noEntry = document.querySelector('.noEntry');
+var $newButton = document.querySelector('.new-button');
 
 $imageUrlElement.addEventListener('input', uploadImage);
 $form.addEventListener('submit', saveEntry);
@@ -19,6 +20,15 @@ window.addEventListener('DOMContentLoaded', addEntry);
 window.addEventListener('DOMContentLoaded', stayOnView);
 $ul.addEventListener('click', showEditForm);
 $body.addEventListener('click', linkSwitch);
+$newButton.addEventListener('click', refreshForm);
+
+function refreshForm(event) {
+  $titleElement.setAttribute('value', '');
+  $imageUrlElement.setAttribute('value', '');
+  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $notesElement.textContent = '';
+  $h1.textContent = 'New Entry';
+}
 
 function uploadImage(event) {
   var imageUrl = event.target.value;
@@ -48,12 +58,11 @@ function saveEntry(event) {
         data.editing.title = $form.elements.title.value;
         data.editing.photo = $form.elements.photo.value;
         data.editing.notes = $form.elements.notes.value;
-        data.entries.splice(i, 1, dataObject);
         var addEdit = createDom(data.editing);
-        // $parent.prepend(addEdit);
-        addNew.replaceWith(addEdit);
+        var $mainList = document.querySelector('.mainlist');
+        $parent.prepend(addEdit);
+        $parent.removeChild($mainList);
         switchView('entries');
-        // $parent.removeChild($parent.lastElementChild);
       }
     }
   }
@@ -62,6 +71,7 @@ function saveEntry(event) {
 function createDom(entry) {
   var newList = document.createElement('li');
   newList.setAttribute('data-entry-id', entry.entryId);
+  newList.setAttribute('class', 'mainlist');
 
   var rowDiv = document.createElement('div');
   rowDiv.setAttribute('class', 'row');
@@ -140,6 +150,7 @@ function showEditForm(event) {
         data.editing = data.entries[i];
       }
     }
+    switchView('entry-form');
     $titleElement.setAttribute('value', data.editing.title);
     $imageUrlElement.setAttribute('value', data.editing.photo);
     $image.setAttribute('src', data.editing.photo);
