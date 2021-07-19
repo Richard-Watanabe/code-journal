@@ -61,8 +61,9 @@ function saveEntry(event) {
         var addEdit = createDom(data.editing);
         var $mainList = document.querySelector('.mainlist');
         $mainList.replacWith(addEdit);
-        // $parent.prepend(addEdit);
-        // $parent.removeChild($mainList);
+        $parent.prepend(addEdit);
+        $parent.removeChild($mainList);
+        data.entries.splice(i, 1, dataObject);
         switchView('entries');
       }
     }
