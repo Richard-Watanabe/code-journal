@@ -60,8 +60,9 @@ function saveEntry(event) {
         data.editing.notes = $form.elements.notes.value;
         var addEdit = createDom(data.editing);
         var $mainList = document.querySelector('.mainlist');
-        $parent.prepend(addEdit);
-        $parent.removeChild($mainList);
+        $mainList.replacWith(addEdit);
+        // $parent.prepend(addEdit);
+        // $parent.removeChild($mainList);
         switchView('entries');
       }
     }
