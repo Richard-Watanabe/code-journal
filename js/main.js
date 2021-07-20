@@ -51,7 +51,6 @@ function saveEntry(event) {
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === data.editing.entryId) {
         data.entries[i] = data.editing;
-        data.entries.splice(i, 1, dataObject);
         var $list = document.querySelectorAll('[data-entry-id]');
         var addEdit = createDom(data.editing);
         $list[i].replaceWith(addEdit);
