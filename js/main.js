@@ -13,6 +13,7 @@ var $body = document.querySelector('body');
 var $view = document.querySelectorAll('.view');
 var $noEntry = document.querySelector('.noEntry');
 var $newButton = document.querySelector('.new-button');
+var $deleteLink = document.querySelector('.delete-link');
 
 $imageUrlElement.addEventListener('input', uploadImage);
 $form.addEventListener('submit', saveEntry);
@@ -21,6 +22,7 @@ window.addEventListener('DOMContentLoaded', stayOnView);
 $ul.addEventListener('click', showEditForm);
 $body.addEventListener('click', linkSwitch);
 $newButton.addEventListener('click', refreshForm);
+// $deleteLink = addEventListener('click', openDelete);
 
 function uploadImage(event) {
   var imageUrl = event.target.value;
@@ -137,6 +139,7 @@ if (data.entries.length !== 0) {
 function showEditForm(event) {
   if (event.target.matches('i')) {
     switchView('entry-form');
+    $deleteLink.className = 'delete-link align-center';
     var stringId = event.target.closest('li').getAttribute('data-entry-id');
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === parseInt(stringId)) {
