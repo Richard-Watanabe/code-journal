@@ -100,3 +100,12 @@ textarea:focus {
   position: relative;
   top: 1.5rem;
 }
+
+.icon {
+  float: right;
+  color: rgb(75, 35, 115);
+  position: relative;
+  bottom: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
