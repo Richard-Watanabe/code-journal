@@ -22,14 +22,6 @@ $ul.addEventListener('click', showEditForm);
 $body.addEventListener('click', linkSwitch);
 $newButton.addEventListener('click', refreshForm);
 
-function refreshForm(event) {
-  $titleElement.setAttribute('value', '');
-  $imageUrlElement.setAttribute('value', '');
-  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $notesElement.textContent = '';
-  $h1.textContent = 'New Entry';
-}
-
 function uploadImage(event) {
   var imageUrl = event.target.value;
   $image.setAttribute('src', imageUrl);
@@ -53,16 +45,18 @@ function saveEntry(event) {
     $noEntry.className = 'hidden';
     $form.reset();
   } else {
+    data.editing.title = $form.elements.title.value;
+    data.editing.photo = $form.elements.photo.value;
+    data.editing.notes = $form.elements.notes.value;
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === data.editing.entryId) {
-        data.editing.title = $form.elements.title.value;
-        data.editing.photo = $form.elements.photo.value;
-        data.editing.notes = $form.elements.notes.value;
+        data.entries[i] = data.editing;
         data.entries.splice(i, 1, dataObject);
-        // var $mainList = document.querySelectorAll('.mainlist');
+        var $list = document.querySelectorAll('[data-entry-id]');
         var addEdit = createDom(data.editing);
-        data.entries[i].replaceWith(addEdit);
+        $list[i].replaceWith(addEdit);
         switchView('entries');
+        $form.reset();
       }
     }
   }
@@ -157,4 +151,12 @@ function showEditForm(event) {
     $notesElement.textContent = data.editing.notes;
     $h1.textContent = 'Edit Entry';
   }
+}
+
+function refreshForm(event) {
+  $titleElement.setAttribute('value', '');
+  $imageUrlElement.setAttribute('value', '');
+  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $notesElement.textContent = '';
+  $h1.textContent = 'New Entry';
 }
