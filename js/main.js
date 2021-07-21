@@ -24,6 +24,10 @@ $body.addEventListener('click', linkSwitch);
 $newButton.addEventListener('click', refreshForm);
 // $deleteLink = addEventListener('click', openDelete);
 
+// function openDelete(event) {
+
+// }
+
 function uploadImage(event) {
   var imageUrl = event.target.value;
   $image.setAttribute('src', imageUrl);
@@ -139,7 +143,7 @@ if (data.entries.length !== 0) {
 function showEditForm(event) {
   if (event.target.matches('i')) {
     switchView('entry-form');
-    $deleteLink.className = 'delete-link align-center';
+    $deleteLink.className = 'delete-link';
     var stringId = event.target.closest('li').getAttribute('data-entry-id');
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === parseInt(stringId)) {
@@ -161,4 +165,5 @@ function refreshForm(event) {
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $notesElement.textContent = '';
   $h1.textContent = 'New Entry';
+  $deleteLink.className = 'delete-link hidden';
 }

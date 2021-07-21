@@ -116,8 +116,6 @@ textarea:focus {
   text-decoration: underline;
   text-decoration-color: red;
   margin: 0;
-}
-
-.align-center {
-  align-items: center;
+  position: relative;
+  top: 1.5rem;
 }
