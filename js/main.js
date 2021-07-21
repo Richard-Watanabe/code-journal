@@ -14,6 +14,7 @@ var $view = document.querySelectorAll('.view');
 var $noEntry = document.querySelector('.noEntry');
 var $newButton = document.querySelector('.new-button');
 var $deleteLink = document.querySelector('.delete-link');
+var $modal = document.querySelector('.modal');
 
 $imageUrlElement.addEventListener('input', uploadImage);
 $form.addEventListener('submit', saveEntry);
@@ -22,11 +23,11 @@ window.addEventListener('DOMContentLoaded', stayOnView);
 $ul.addEventListener('click', showEditForm);
 $body.addEventListener('click', linkSwitch);
 $newButton.addEventListener('click', refreshForm);
-// $deleteLink = addEventListener('click', openDelete);
+$deleteLink.addEventListener('click', openDelete);
 
-// function openDelete(event) {
-
-// }
+function openDelete(event) {
+  $modal.className = 'modal overlay';
+}
 
 function uploadImage(event) {
   var imageUrl = event.target.value;
