@@ -16,6 +16,7 @@ var $newButton = document.querySelector('.new-button');
 var $deleteLink = document.querySelector('.delete-link');
 var $modal = document.querySelector('.modal');
 var $cancel = document.querySelector('.cancel');
+// var $confirm = document.querySelector('.confirm');
 
 $imageUrlElement.addEventListener('input', uploadImage);
 $form.addEventListener('submit', saveEntry);
@@ -26,6 +27,7 @@ $body.addEventListener('click', linkSwitch);
 $newButton.addEventListener('click', refreshForm);
 $deleteLink.addEventListener('click', openDelete);
 $cancel.addEventListener('click', closeModal);
+// $confirm.addEventListener('click', deleteEntry);
 
 function openDelete(event) {
   $modal.className = 'modal overlay';
