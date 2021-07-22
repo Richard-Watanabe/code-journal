@@ -15,6 +15,7 @@ var $noEntry = document.querySelector('.noEntry');
 var $newButton = document.querySelector('.new-button');
 var $deleteLink = document.querySelector('.delete-link');
 var $modal = document.querySelector('.modal');
+var $cancel = document.querySelector('.cancel');
 
 $imageUrlElement.addEventListener('input', uploadImage);
 $form.addEventListener('submit', saveEntry);
@@ -24,6 +25,7 @@ $ul.addEventListener('click', showEditForm);
 $body.addEventListener('click', linkSwitch);
 $newButton.addEventListener('click', refreshForm);
 $deleteLink.addEventListener('click', openDelete);
+$cancel.addEventListener('click', closeModal);
 
 function openDelete(event) {
   $modal.className = 'modal overlay';
@@ -167,4 +169,8 @@ function refreshForm(event) {
   $notesElement.textContent = '';
   $h1.textContent = 'New Entry';
   $deleteLink.className = 'delete-link hidden';
+}
+
+function closeModal(event) {
+  $modal.className = 'modal hidden';
 }
