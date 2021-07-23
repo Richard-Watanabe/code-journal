@@ -86,11 +86,19 @@ textarea:focus {
   float: right;
 }
 
+.save-button:hover {
+  background-color: rgb(106, 83, 129);
+}
+
 .new-button {
   border-radius: 5px;
   padding: 0.5rem 1rem;
   position: relative;
   top: 2rem;
+}
+
+.new-button:hover {
+  background-color: rgb(106, 83, 129);
 }
 
 .flex-end {
@@ -123,10 +131,19 @@ textarea:focus {
   cursor: pointer;
 }
 
+.icon:hover {
+  color: rgb(106, 83, 129);
+}
+
 .delete-link {
   color: red;
   text-decoration: underline;
   text-decoration-color: red;
+}
+
+.delete-link:hover {
+  color: rgb(247, 133, 92);
+  text-decoration-color: rgb(247, 133, 92);
 }
 
 .overlay {
@@ -158,6 +175,10 @@ textarea:focus {
   border-radius: 5px;
 }
 
+.cancel:hover {
+  background-color: #bdbdbd;
+}
+
 .confirm {
   background-color: #dc2828;
   color: white;
@@ -165,6 +186,14 @@ textarea:focus {
   border-radius: 5px;
 }
 
+.confirm:hover {
+  background-color: rgb(216, 79, 79);
+}
+
 .align-center {
   align-items: center;
+}
+
+.entries-link:hover {
+  color: rgb(177, 177, 177);
 }
