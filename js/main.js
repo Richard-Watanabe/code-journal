@@ -16,7 +16,7 @@ var $newButton = document.querySelector('.new-button');
 var $deleteLink = document.querySelector('.delete-link');
 var $modal = document.querySelector('.modal');
 var $cancel = document.querySelector('.cancel');
-// var $confirm = document.querySelector('.confirm');
+var $confirm = document.querySelector('.confirm');
 
 $imageUrlElement.addEventListener('input', uploadImage);
 $form.addEventListener('submit', saveEntry);
@@ -27,7 +27,7 @@ $body.addEventListener('click', linkSwitch);
 $newButton.addEventListener('click', refreshForm);
 $deleteLink.addEventListener('click', openDelete);
 $cancel.addEventListener('click', closeModal);
-// $confirm.addEventListener('click', deleteEntry);
+$confirm.addEventListener('click', deleteEntry);
 
 function openDelete(event) {
   $modal.className = 'modal overlay';
@@ -62,8 +62,8 @@ function saveEntry(event) {
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === data.editing.entryId) {
         data.entries[i] = data.editing;
-        var $list = document.querySelectorAll('[data-entry-id]');
         var addEdit = createDom(data.editing);
+        var $list = document.querySelectorAll('[data-entry-id]');
         $list[i].replaceWith(addEdit);
         switchView('entries');
         $form.reset();
@@ -175,4 +175,21 @@ function refreshForm(event) {
 
 function closeModal(event) {
   $modal.className = 'modal hidden';
+}
+
+function deleteEntry(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      data.entries[i] = data.editing;
+      data.entries.splice(i, 1);
+      var $list = document.querySelectorAll('[data-entry-id]');
+      $list[i].remove($list[i]);
+      switchView('entries');
+      $modal.className = 'modal hidden';
+      $form.reset();
+    }
+  }
+  if (data.entries.length === 0) {
+    $noEntry.className = 'noEntry';
+  }
 }
