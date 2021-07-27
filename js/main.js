@@ -13,6 +13,10 @@ var $body = document.querySelector('body');
 var $view = document.querySelectorAll('.view');
 var $noEntry = document.querySelector('.noEntry');
 var $newButton = document.querySelector('.new-button');
+var $deleteLink = document.querySelector('.delete-link');
+var $modal = document.querySelector('.modal');
+var $cancel = document.querySelector('.cancel');
+var $confirm = document.querySelector('.confirm');
 
 $imageUrlElement.addEventListener('input', uploadImage);
 $form.addEventListener('submit', saveEntry);
@@ -21,6 +25,13 @@ window.addEventListener('DOMContentLoaded', stayOnView);
 $ul.addEventListener('click', showEditForm);
 $body.addEventListener('click', linkSwitch);
 $newButton.addEventListener('click', refreshForm);
+$deleteLink.addEventListener('click', openDelete);
+$cancel.addEventListener('click', closeModal);
+$confirm.addEventListener('click', deleteEntry);
+
+function openDelete(event) {
+  $modal.className = 'modal overlay';
+}
 
 function uploadImage(event) {
   var imageUrl = event.target.value;
@@ -51,8 +62,8 @@ function saveEntry(event) {
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === data.editing.entryId) {
         data.entries[i] = data.editing;
-        var $list = document.querySelectorAll('[data-entry-id]');
         var addEdit = createDom(data.editing);
+        var $list = document.querySelectorAll('[data-entry-id]');
         $list[i].replaceWith(addEdit);
         switchView('entries');
         $form.reset();
@@ -137,6 +148,7 @@ if (data.entries.length !== 0) {
 function showEditForm(event) {
   if (event.target.matches('i')) {
     switchView('entry-form');
+    $deleteLink.className = 'delete-link';
     var stringId = event.target.closest('li').getAttribute('data-entry-id');
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === parseInt(stringId)) {
@@ -158,4 +170,26 @@ function refreshForm(event) {
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $notesElement.textContent = '';
   $h1.textContent = 'New Entry';
+  $deleteLink.className = 'delete-link hidden';
+}
+
+function closeModal(event) {
+  $modal.className = 'modal hidden';
+}
+
+function deleteEntry(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      data.entries[i] = data.editing;
+      data.entries.splice(i, 1);
+      var $list = document.querySelectorAll('[data-entry-id]');
+      $list[i].remove($list[i]);
+      switchView('entries');
+      $modal.className = 'modal hidden';
+      $form.reset();
+    }
+  }
+  if (data.entries.length === 0) {
+    $noEntry.className = 'noEntry';
+  }
 }

@@ -24,11 +24,23 @@ p {
   line-height: 1.6;
 }
 
+p.question {
+  font-size: 1.5rem;
+}
+
 a {
   font-size: 1.2rem;
   margin-left: 2.5rem;
   margin-top: 1.5rem;
   text-decoration: none;
+}
+
+a.modal-button {
+  margin: 0 2rem;
+}
+
+a.delete-link {
+  margin: 0;
 }
 
 ul {
@@ -71,6 +83,11 @@ textarea:focus {
   border-radius: 5px;
   padding: 0.5rem 1rem;
   text-align: right;
+  float: right;
+}
+
+.save-button:hover {
+  background-color: rgb(106, 83, 129);
 }
 
 .new-button {
@@ -78,6 +95,10 @@ textarea:focus {
   padding: 0.5rem 1rem;
   position: relative;
   top: 2rem;
+}
+
+.new-button:hover {
+  background-color: rgb(106, 83, 129);
 }
 
 .flex-end {
@@ -108,4 +129,71 @@ textarea:focus {
   bottom: 1.5rem;
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+.icon:hover {
+  color: rgb(106, 83, 129);
+}
+
+.delete-link {
+  color: red;
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+
+.delete-link:hover {
+  color: rgb(247, 133, 92);
+  text-decoration-color: rgb(247, 133, 92);
+}
+
+.overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.dialogue {
+  background-color: white;
+  height: 11.5rem;
+  width: 32rem;
+  margin: 19.5rem auto;
+  border-radius: 5px;
+  padding-top: 1rem;
+}
+
+.text-center {
+  justify-content: center;
+}
+
+.cancel {
+  background-color: #b6b6b6;
+  color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.cancel:hover {
+  background-color: #bdbdbd;
+}
+
+.confirm {
+  background-color: #dc2828;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.confirm:hover {
+  background-color: rgb(216, 79, 79);
+}
+
+.align-center {
+  align-items: center;
+}
+
+.entries-link:hover {
+  color: rgb(177, 177, 177);
 }
